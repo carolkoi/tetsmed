@@ -31,5 +31,19 @@ export default {
     CardPageVisits,
     CardSocialTraffic,
   },
+  data(){
+    return{
+      loggedInUser:''
+
+    }
+  },
+  methods: {
+    getLoggedInUser(){
+
+    }
+  },
+  created(){
+    this.getLoggedInUser
+  }
 };
 </script>

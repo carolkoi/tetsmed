@@ -13,7 +13,7 @@
             class="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
             href="#pablo"
           >
-            Vue Notus
+            Collabmed Solutions
           </a>
         </router-link>
         <button
@@ -29,7 +29,7 @@
         :class="[navbarOpen ? 'block' : 'hidden']"
         id="example-navbar-warning"
       >
-        <ul class="flex flex-col lg:flex-row list-none mr-auto">
+        <!-- <ul class="flex flex-col lg:flex-row list-none mr-auto">
           <li class="flex items-center">
             <a
               class="hover:text-blueGray-500 text-blueGray-700 px-3 py-2 flex items-center text-xs uppercase font-bold"
@@ -41,8 +41,8 @@
               Docs
             </a>
           </li>
-        </ul>
-        <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+        </ul> -->
+        <!-- <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
           <li class="flex items-center">
             <index-dropdown />
           </li>
@@ -87,14 +87,14 @@
               <i class="fas fa-arrow-alt-circle-down"></i> Download
             </button>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import IndexDropdown from "@/components/Dropdowns/IndexDropdown.vue";
+// import IndexDropdown from "@/components/Dropdowns/IndexDropdown.vue";
 
 export default {
   data() {
@@ -108,7 +108,7 @@ export default {
     },
   },
   components: {
-    IndexDropdown,
+    // IndexDropdown,
   },
 };
 </script>

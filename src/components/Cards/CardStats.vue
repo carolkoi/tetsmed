@@ -41,11 +41,11 @@ export default {
   props: {
     statSubtitle: {
       type: String,
-      default: "Traffic",
+      default: "No. Of Patients",
     },
     statTitle: {
       type: String,
-      default: "350,897",
+      default: "34",
     },
     statArrow: {
       default: "up",
@@ -66,7 +66,7 @@ export default {
     },
     statDescripiron: {
       type: String,
-      default: "Since last month",
+      default: "Yesterda",
     },
     statIconName: {
       type: String,

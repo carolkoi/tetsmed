@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import CardSettings from "@/components/Cards/CardSettings.vue";
+import CardSettings from "@/components/Cards/TreatForm.vue";
 import CardProfile from "@/components/Cards/CardProfile.vue";
 
 export default {

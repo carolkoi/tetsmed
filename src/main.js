@@ -1,5 +1,14 @@
 import { createApp } from "vue";
+// import Vue from 'vue'
 import { createWebHistory, createRouter } from "vue-router";
+
+// import VueGoodTablePlugin from 'vue-good-table';
+
+// // import the styles 
+// import 'vue-good-table/dist/vue-good-table.css'
+
+// Vue.use(VueGoodTablePlugin);
+// Vue.component('VueGoodTable', VueGoodTablePlugin)
 
 // styles
 
@@ -19,6 +28,10 @@ import Auth from "@/layouts/Auth.vue";
 
 import Dashboard from "@/views/admin/Dashboard.vue";
 import Settings from "@/views/admin/Settings.vue";
+import Treatment from "@/views/admin/PatientTreatment.vue";
+import Referral from "@/views/admin/PatientReferral.vue";
+
+
 import Tables from "@/views/admin/Tables.vue";
 import Maps from "@/views/admin/Maps.vue";
 
@@ -46,11 +59,19 @@ const routes = [
         component: Dashboard,
       },
       {
-        path: "/admin/settings",
+        path: "/patient/checkin",
         component: Settings,
       },
       {
-        path: "/admin/tables",
+        path: "/patient/referral",
+        component: Referral,
+      },
+      {
+        path: "/patient/treatment",
+        component: Treatment,
+      },
+      {
+        path: "/main/dashboard",
         component: Tables,
       },
       {

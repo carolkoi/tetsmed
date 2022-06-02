@@ -5,7 +5,7 @@
         <div
           class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
         >
-          <div class="rounded-t mb-0 px-6 py-6">
+          <!-- <div class="rounded-t mb-0 px-6 py-6">
             <div class="text-center mb-3">
               <h6 class="text-blueGray-500 text-sm font-bold">
                 Sign up with
@@ -28,10 +28,10 @@
               </button>
             </div>
             <hr class="mt-6 border-b-1 border-blueGray-300" />
-          </div>
+          </div> -->
           <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
             <div class="text-blueGray-400 text-center mb-3 font-bold">
-              <small>Or sign up with credentials</small>
+              <small>Sign up with credentials</small>
             </div>
             <form>
               <div class="relative w-full mb-3">
@@ -42,9 +42,10 @@
                   Name
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Name"
+                  v-model="form.fullname"
                 />
               </div>
 
@@ -59,7 +60,29 @@
                   type="email"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email"
+                  v-model="form.email"
                 />
+              </div>
+              <div class="relative w-full mb-3">
+                <label
+                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  htmlFor="grid-password"
+                >
+                  Department
+                </label>
+                <!-- <input
+                  type="text"
+                  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="Name"
+                  v-model="form.department"
+                /> -->
+                <select v-model="form.department"
+                  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                >
+                <option value="null" disabled selected hidden>Select Department ..</option>
+                 <option v-for="dpt in departments" :key="dpt.id" :value="dpt.id">{{ dpt.name }}</option>
+                </select>
+               
               </div>
 
               <div class="relative w-full mb-3">
@@ -70,12 +93,13 @@
                   Password
                 </label>
                 <input
+                v-model="form.password"
                   type="password"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Password"
                 />
               </div>
-
+<!-- 
               <div>
                 <label class="inline-flex items-center cursor-pointer">
                   <input
@@ -90,10 +114,11 @@
                     </a>
                   </span>
                 </label>
-              </div>
+              </div> -->
 
               <div class="text-center mt-6">
                 <button
+                v-on:click="registerUser"
                   class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                   type="button"
                 >
@@ -103,6 +128,14 @@
             </form>
           </div>
         </div>
+        <div class="flex flex-wrap mt-6 relative">
+          
+          <div class="w-1/2 text-right">
+            <router-link to="/auth/login" class="text-blueGray-200">
+              <small>Already have an account? Sign In</small>
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -110,13 +143,57 @@
 <script>
 import github from "@/assets/img/github.svg";
 import google from "@/assets/img/google.svg";
+import {get,post} from '@/Helpers/api';
 
 export default {
   data() {
     return {
       github,
       google,
+      // fullname,
+      // email,
+      // department,
+      // password
+      form:{
+        fullname :null,
+        email : null,
+        department: null,
+        password : null
+      },
+      departments:[]
     };
   },
+  methods:{
+    registerUser(){
+      console.log('my data', this.form)
+      post('http://127.0.0.1:8000/api/register', this.form)
+      .then(res => {
+        console.log('reg response', res.data.user)
+        if(res.data.user){
+          localStorage.setItem('userName', res.data.user.name)
+
+          localStorage.setItem('department', res.data.user.department_id)
+          localStorage.setItem('id', res.data.user.id)
+
+          window.location.href= '/auth/login';
+          // this.$router.push({ path : '/auth/login' });
+
+        }
+
+      })
+      .catch(error => {
+     console.log(error.message)
+  })
+    },
+    getDepartments(){
+      get('http://127.0.0.1:8000/api/departments').then(res => {
+        console.log('departments',  res.data.departments)
+        this.departments = res.data.departments
+      })
+    }
+  },
+  created(){
+    this.getDepartments()
+  }
 };
 </script>
