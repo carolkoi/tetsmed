@@ -166,7 +166,7 @@ export default {
   methods:{
     registerUser(){
       console.log('my data', this.form)
-      post('http://127.0.0.1:8000/api/register', this.form)
+      post('https://collabmed.herokuapp.com/api/register', this.form)
       .then(res => {
         console.log('reg response', res.data.user)
         if(res.data.user){
@@ -186,7 +186,7 @@ export default {
   })
     },
     getDepartments(){
-      get('http://127.0.0.1:8000/api/departments').then(res => {
+      get('https://collabmed.herokuapp.com/api/departments').then(res => {
         console.log('departments',  res.data.departments)
         this.departments = res.data.departments
       })

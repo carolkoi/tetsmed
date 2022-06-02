@@ -193,20 +193,20 @@ export default {
 
     },
     getDepartments(){
-      get('http://127.0.0.1:8000/api/departments-except-reception-nursing').then(res => {
+      get('https://collabmed.herokuapp.com/api/departments-except-reception-nursing').then(res => {
         console.log('departments',  res.data.departments)
         this.departments = res.data.departments
       })
     },
     getCurrentDepartments(){
-      get('http://127.0.0.1:8000/api/departments-except-reception').then(res => {
+      get('https://collabmed.herokuapp.com/api/departments-except-reception').then(res => {
         console.log('departments',  res.data.departments)
         this.depts = res.data.departments
       })
     },
     updateReferralStatus(){
       console.log('my patient referral', this.form)
-      post('http://127.0.0.1:8000/api/patient/refer', this.form)
+      post('https://collabmed.herokuapp.com/api/patient/refer', this.form)
       .then(res => {
         console.log(' patient ref response', res.data.patient)
         // if(res.data.ref){
@@ -223,7 +223,7 @@ export default {
     patientReferral(){
       this.updateReferralStatus()
       // console.log('my patient referral', this.form)
-      post('http://127.0.0.1:8000/api/patient-referral', this.form)
+      post('https://collabmed.herokuapp.com/api/patient-referral', this.form)
       .then(res => {
         console.log(' patient ref response', res.data.ref)
         if(res.data.ref){

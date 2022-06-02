@@ -238,7 +238,7 @@ export default {
   },
   methods:{
     getPatients(){
-         get('http://127.0.0.1:8000/api/patients').then(res => {
+         get('https://collabmed.herokuapp.com/api/patients').then(res => {
         console.log('patients',  res.data.patients)
         // this.forEach()
 
@@ -258,7 +258,7 @@ export default {
     },
     getDepartmentById(id){
       // id=1
-         this.dept= get('http://127.0.0.1:8000/api/department/' + id).then(res => {
+         this.dept= get('https://collabmed.herokuapp.com/api/department/' + id).then(res => {
         console.log('department id',  res.data.department)
         // this.rows = res.data.patients
         // this.dept= res.data.department;
@@ -267,7 +267,7 @@ export default {
       })
     },
     getuserById(id){
-         get('http://127.0.0.1:8000/api/user/' + id).then(res => {
+         get('https://collabmed.herokuapp.com/api/user/' + id).then(res => {
         console.log('user id',  res.data.department)
         // this.rows = res.data.patients
         this.dept= res.data.department;
@@ -277,7 +277,7 @@ export default {
     },
     async getPatientById(id){
       // id=1
-          let xx = await get('http://127.0.0.1:8000/api/patient/' + id).then(res => {
+          let xx = await get('https://collabmed.herokuapp.com/api/patient/' + id).then(res => {
         console.log('my patient id 1',  res.data.patient)
         localStorage.setItem('myPatientId', res.data.patient.id)
      localStorage.setItem('myPatientName', res.data.patient.name)
@@ -294,7 +294,7 @@ export default {
     },
     patientCheckIn(){
       console.log('my patient', this.form)
-      post('http://127.0.0.1:8000/api/patient-checkin', this.form)
+      post('https://collabmed.herokuapp.com/api/patient-checkin', this.form)
       .then(res => {
         console.log(' patient reg response', res.data.patient)
         if(res.data.user){

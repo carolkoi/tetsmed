@@ -123,7 +123,7 @@ export default {
   },
   methods:{
     userLogin(){
-      post('http://127.0.0.1:8000/api/login', this.form)
+      post('https://collabmed.herokuapp.com/api/login', this.form)
       .then(res => {
         console.log('login response', res)
         if(res.status == 200){
@@ -137,7 +137,7 @@ export default {
     getUsers(){
       alert('am here')
       console.log('my data', this.form.fullname)
-      get('http://127.0.0.1:8000/api/users')
+      get('https://collabmed.herokuapp.com/api/users')
       .then(res => {
         console.log('response', res)
 

@@ -270,7 +270,7 @@ export default {
 
     },
     getDepartments(){
-      get('http://127.0.0.1:8000/api/departments-except-reception').then(res => {
+      get('https://collabmed.herokuapp.com/api/departments-except-reception').then(res => {
         console.log('departments',  res.data.departments)
         this.departments = res.data.departments
       })
@@ -278,7 +278,7 @@ export default {
     
     patientTreatment(){
       console.log('my patient form', this.form)
-      post('http://127.0.0.1:8000/api/patient/update', this.form)
+      post('https://collabmed.herokuapp.com/api/patient/update', this.form)
       .then(res => {
         console.log(' patient reg response', res.data.patient)
         if(res.data.patient){
