@@ -99,14 +99,14 @@ export default {
       console.log("hello");
     },
     getPatients(){
-         get('https://collabmed.herokuapp.com/api/patients').then(res => {
+         get('https://server.digitallyfreed.com/api/patients').then(res => {
         console.log('patients',  res.data.patients)
         this.rows = res.data.patients
       })
     },
     patientCheckIn(){
       console.log('my patient', this.form)
-      post('https://collabmed.herokuapp.com/api/patient-checkin', this.form)
+      post('https://server.digitallyfreed.com/api/patient-checkin', this.form)
       .then(res => {
         console.log(' patient reg response', res.data.patient)
         if(res.data.user){

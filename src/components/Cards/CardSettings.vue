@@ -136,7 +136,7 @@ export default {
 
     },
     getDepartments(){
-      get('https://collabmed.herokuapp.com/api/departments-except-reception').then(res => {
+      get('https://server.digitallyfreed.com/api/departments-except-reception').then(res => {
         console.log('departments',  res.data.departments)
         this.departments = res.data.departments
       })
@@ -144,7 +144,7 @@ export default {
     
     patientCheckIn(){
       console.log('my patient', this.form)
-      post('https://collabmed.herokuapp.com/api/patient-checkin', this.form)
+      post('https://server.digitallyfreed.com/api/patient-checkin', this.form)
       .then(res => {
         console.log(' patient reg response', res.data.patient)
         if(res.data.patient){

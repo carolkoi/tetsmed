@@ -1,9 +1,7 @@
 {
   "name": "collabmed",
-  "homepage": "https://demos.creative-tim.com/vue-notus/",
   "version": "1.1.0",
   "description": "Healthcare managemnet",
-  "repository": "https://github.com/creativetimofficial/vue-notus",
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
